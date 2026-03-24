@@ -1,10 +1,10 @@
-package fiap.com.br._graus;
+package fiap.com.br.graus;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApplicationTests {
+class GrausApplicationTests {
 
 	@Test
 	void contextLoads() {
