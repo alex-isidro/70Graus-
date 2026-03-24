@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @Slf4j
 @RequestMapping("usuario")
@@ -17,8 +19,8 @@ public class UsuarioController {
     private UsuarioServices service;
 
     @GetMapping
-    public void listAll(){
-        service.getAllUsuario();
+    public List<Usuario> listAll(){
+        return service.getAllUsuario();
     }
 
     @PostMapping
@@ -28,11 +30,10 @@ public class UsuarioController {
                 .body(service.addUsuario(usuario));
     }
 
-    @PostMapping("{id}")
+    @GetMapping("{id}")
     public ResponseEntity<Usuario> getUsuarioById(@PathVariable Long id) {
         return ResponseEntity.ok(service.getUsuarioById(id));
     }
-
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteUsuario(@PathVariable Long id) {
         service.deleteUsuario(id);
