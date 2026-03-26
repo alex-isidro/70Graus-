@@ -26,7 +26,7 @@ public class MovimentacaoEstoqueService {
         return repository.findAll();
     }
 
-    public MovimentacaoEstoque Add(MovimentacaoEstoque movimentacao){
+    public MovimentacaoEstoque add(MovimentacaoEstoque movimentacao){
         return repository.save(movimentacao);
     }
     public MovimentacaoEstoque findById(Long id){
