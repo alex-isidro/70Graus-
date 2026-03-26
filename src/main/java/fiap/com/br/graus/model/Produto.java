@@ -15,6 +15,7 @@ public class Produto {
     private String nome;
     private String descricao;
     private Double preco;
+    private String sku;
     private String tamanho;
     private String cor;
     private String marca;
