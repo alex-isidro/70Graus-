@@ -13,7 +13,7 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-public class Usuario {
+public class Funcionario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
@@ -23,9 +23,4 @@ public class Usuario {
 
     @Size(min = 6, message = "Senha deve ter no mínimo 6 caracteres")
     private String senha;
-
-    @Pattern(regexp = "\\d{10,11}", message = "Telefone inválido")
-    private String telefone;
-    private LocalDate dataCriacao;
-    private Boolean ativo;
 }
