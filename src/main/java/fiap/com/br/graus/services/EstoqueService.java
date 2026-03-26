@@ -14,7 +14,7 @@ public class EstoqueService {
     @Autowired
     private EstoqueRepository repository;
 
-    private Estoque findUsuarioById(Long id) {
+    private Estoque findEstoqueById(Long id) {
         return repository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "ID " + id + " não encontrado")
@@ -29,16 +29,16 @@ public class EstoqueService {
         return repository.save(estoque);
     }
     public Estoque findById(Long id){
-        return findUsuarioById(id);
+        return findEstoqueById(id);
     }
 
     public void delete(Long id) {
-        findUsuarioById(id);
+        findEstoqueById(id);
         repository.deleteById(id);
     }
 
     public Estoque update(Long id, Estoque newEstoque) {
-        findUsuarioById(id);
+        findEstoqueById(id);
         newEstoque.setId(id);
         return repository.save(newEstoque);
     }

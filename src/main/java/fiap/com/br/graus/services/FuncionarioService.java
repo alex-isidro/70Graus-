@@ -14,32 +14,32 @@ public class FuncionarioService {
     @Autowired
     private FuncionarioRepository repository;
 
-    private Funcionario findUsuarioById(Long id) {
+    private Funcionario findFuncionarioById(Long id) {
         return repository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Funcionario com id " + id + " não encontrado")
         );
     }
 
-    public List<Funcionario> getAllUsuario(){
+    public List<Funcionario> getAllFuncionario(){
         return repository.findAll();
     }
 
-    public Funcionario addUsuario(Funcionario funcionario){
+    public Funcionario addFuncionario(Funcionario funcionario){
         return repository.save(funcionario);
     }
 
-    public Funcionario getUsuarioById(Long id){
-        return findUsuarioById(id);
+    public Funcionario getFuncionarioById(Long id){
+        return findFuncionarioById(id);
     }
 
-    public void deleteUsuario(Long id) {
-        findUsuarioById(id);
+    public void deleteFuncionario(Long id) {
+        findFuncionarioById(id);
         repository.deleteById(id);
     }
 
-    public Funcionario updateUsuario(Long id, Funcionario newFuncionario) {
-        findUsuarioById(id);
+    public Funcionario updateFuncionario(Long id, Funcionario newFuncionario) {
+        findFuncionarioById(id);
         newFuncionario.setId(id);
         return repository.save(newFuncionario);
     }

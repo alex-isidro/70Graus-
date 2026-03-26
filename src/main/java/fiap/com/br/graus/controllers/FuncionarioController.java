@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
-@RequestMapping("usuario")
+@RequestMapping("funcionario")
 public class FuncionarioController {
 
     @Autowired
@@ -21,28 +21,28 @@ public class FuncionarioController {
 
     @GetMapping
     public List<Funcionario> listAll(){
-        return service.getAllUsuario();
+        return service.getAllFuncionario();
     }
 
     @PostMapping
-    public ResponseEntity<Funcionario> createUsuario(@RequestBody @Valid Funcionario funcionario){
+    public ResponseEntity<Funcionario> createFuncionario(@RequestBody @Valid Funcionario funcionario){
         return ResponseEntity.
                 status(HttpStatus.CREATED)
-                .body(service.addUsuario(funcionario));
+                .body(service.addFuncionario(funcionario));
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Funcionario> getUsuarioById(@PathVariable Long id) {
-        return ResponseEntity.ok(service.getUsuarioById(id));
+    public ResponseEntity<Funcionario> getFuncionarioById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getFuncionarioById(id));
     }
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable Long id) {
-        service.deleteUsuario(id);
+    public ResponseEntity<Void> deleteFuncionario(@PathVariable Long id) {
+        service.deleteFuncionario(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Funcionario> updateUsuario(@PathVariable Long id, @RequestBody Funcionario funcionario) {
-        return ResponseEntity.ok(service.updateUsuario(id, funcionario));
+    public ResponseEntity<Funcionario> updateFuncionario(@PathVariable Long id, @RequestBody Funcionario funcionario) {
+        return ResponseEntity.ok(service.updateFuncionario(id, funcionario));
     }
 }

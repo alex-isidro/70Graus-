@@ -15,7 +15,7 @@ public class MovimentacaoEstoqueService {
     @Autowired
     private MovimentacaoEstoqueRepository repository;
 
-    private MovimentacaoEstoque findUsuarioById(Long id) {
+    private MovimentacaoEstoque findmovimentacaoById(Long id) {
         return repository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "ID " + id + " não encontrado")
@@ -30,16 +30,16 @@ public class MovimentacaoEstoqueService {
         return repository.save(movimentacao);
     }
     public MovimentacaoEstoque findById(Long id){
-        return findUsuarioById(id);
+        return findmovimentacaoById(id);
     }
 
     public void delete(Long id) {
-        findUsuarioById(id);
+        findmovimentacaoById(id);
         repository.deleteById(id);
     }
 
     public MovimentacaoEstoque update(Long id, MovimentacaoEstoque newMovimentacao) {
-        findUsuarioById(id);
+        findmovimentacaoById(id);
         newMovimentacao.setId(id);
         return repository.save(newMovimentacao);
     }
