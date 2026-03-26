@@ -1,6 +1,6 @@
 package fiap.com.br.graus.controllers;
 
-import fiap.com.br.graus.model.Usuario;
+import fiap.com.br.graus.model.Funcionario;
 import fiap.com.br.graus.services.UsuarioServices;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -20,19 +20,19 @@ public class UsuarioController {
     private UsuarioServices service;
 
     @GetMapping
-    public List<Usuario> listAll(){
+    public List<Funcionario> listAll(){
         return service.getAllUsuario();
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> createUsuario(@RequestBody @Valid Usuario usuario){
+    public ResponseEntity<Funcionario> createUsuario(@RequestBody @Valid Funcionario funcionario){
         return ResponseEntity.
                 status(HttpStatus.CREATED)
-                .body(service.addUsuario(usuario));
+                .body(service.addUsuario(funcionario));
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Usuario> getUsuarioById(@PathVariable Long id) {
+    public ResponseEntity<Funcionario> getUsuarioById(@PathVariable Long id) {
         return ResponseEntity.ok(service.getUsuarioById(id));
     }
     @DeleteMapping("{id}")
@@ -42,7 +42,7 @@ public class UsuarioController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Usuario> updateUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
-        return ResponseEntity.ok(service.updateUsuario(id, usuario));
+    public ResponseEntity<Funcionario> updateUsuario(@PathVariable Long id, @RequestBody Funcionario funcionario) {
+        return ResponseEntity.ok(service.updateUsuario(id, funcionario));
     }
 }
