@@ -1,7 +1,7 @@
 package fiap.com.br.graus.controllers;
 
 import fiap.com.br.graus.model.Funcionario;
-import fiap.com.br.graus.services.UsuarioServices;
+import fiap.com.br.graus.services.FuncionarioServices;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +14,10 @@ import java.util.List;
 @RestController
 @Slf4j
 @RequestMapping("usuario")
-public class UsuarioController {
+public class FuncionarioController {
 
     @Autowired
-    private UsuarioServices service;
+    private FuncionarioServices service;
 
     @GetMapping
     public List<Funcionario> listAll(){
