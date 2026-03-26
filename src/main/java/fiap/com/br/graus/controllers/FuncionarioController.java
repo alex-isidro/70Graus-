@@ -1,7 +1,7 @@
 package fiap.com.br.graus.controllers;
 
 import fiap.com.br.graus.model.Funcionario;
-import fiap.com.br.graus.services.FuncionarioServices;
+import fiap.com.br.graus.services.FuncionarioService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.List;
 public class FuncionarioController {
 
     @Autowired
-    private FuncionarioServices service;
+    private FuncionarioService service;
 
     @GetMapping
     public List<Funcionario> listAll(){

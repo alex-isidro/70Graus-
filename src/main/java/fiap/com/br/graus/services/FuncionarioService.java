@@ -3,18 +3,21 @@ package fiap.com.br.graus.services;
 import fiap.com.br.graus.model.Funcionario;
 import fiap.com.br.graus.repositories.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
 @Service
-public class FuncionarioServices {
+public class FuncionarioService {
     @Autowired
     private FuncionarioRepository repository;
 
     private Funcionario findUsuarioById(Long id) {
         return repository.findById(id).orElseThrow(
-                () -> new RuntimeException("Despesas com id " + id + " não encontrado")
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Funcionario com id " + id + " não encontrado")
         );
     }
 
