@@ -2,6 +2,7 @@ package fiap.com.br.graus.controllers;
 
 import fiap.com.br.graus.model.Usuario;
 import fiap.com.br.graus.services.UsuarioServices;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> createUsuario(@RequestBody @Valid Usuario usuario){
         return ResponseEntity.
                 status(HttpStatus.CREATED)
                 .body(service.addUsuario(usuario));
