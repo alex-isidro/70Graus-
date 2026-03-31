@@ -14,4 +14,15 @@ public class Estoque {
     private Long produtoId;
     private Integer quantidadeDisponivel;
     private Integer quantidadeMinima;
+
+    public void movimentar(int quantidade, boolean entrada) {
+        int fator = entrada ? 1 : -1;
+        int novaQuantidade = this.quantidadeDisponivel + (quantidade * fator);
+
+        if (novaQuantidade < 0) {
+            throw new RuntimeException("Estoque insuficiente");
+        }
+
+        this.quantidadeDisponivel = novaQuantidade;
+    }
 }

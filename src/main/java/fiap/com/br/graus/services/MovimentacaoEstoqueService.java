@@ -1,7 +1,9 @@
 package fiap.com.br.graus.services;
 
 
+import fiap.com.br.graus.model.Estoque;
 import fiap.com.br.graus.model.MovimentacaoEstoque;
+import fiap.com.br.graus.repositories.EstoqueRepository;
 import fiap.com.br.graus.repositories.MovimentacaoEstoqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,9 @@ import java.util.List;
 
 @Service
 public class MovimentacaoEstoqueService {
+
+    @Autowired
+    private EstoqueRepository estoqueRepository;
     @Autowired
     private MovimentacaoEstoqueRepository repository;
 
@@ -27,6 +32,17 @@ public class MovimentacaoEstoqueService {
     }
 
     public MovimentacaoEstoque add(MovimentacaoEstoque movimentacao){
+        Estoque estoque = estoqueRepository.findById(movimentacao.getEstoqueId())
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Estoque não encontrado"
+                ));
+
+        estoque.movimentar(
+                movimentacao.getQuantidade(),
+                movimentacao.getTipoMovimentacao().equalsIgnoreCase("ENTRADA")
+        );
+        estoqueRepository.save(estoque);
+
         return repository.save(movimentacao);
     }
     public MovimentacaoEstoque findById(Long id){
