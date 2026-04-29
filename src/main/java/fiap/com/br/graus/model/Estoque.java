@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
@@ -11,8 +13,16 @@ import lombok.Data;
 public class Estoque {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
     private Long produtoId;
+
+    @NotNull
+    @Min(0)
     private Integer quantidadeDisponivel;
+
+    @NotNull
+    @Min(0)
     private Integer quantidadeMinima;
 
     public void movimentar(int quantidade, boolean entrada) {

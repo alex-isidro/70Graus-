@@ -4,23 +4,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Data;
-
-import java.time.LocalDate;
 
 @Data
 @Entity
 public class Funcionario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
+    @Size(min = 3, max = 40)
     private String nome;
 
+    @NotBlank
     @Email(message = "Email inválido")
     private String email;
 
-    @Size(min = 6, message = "Senha deve ter no mínimo 6 caracteres")
+    @NotBlank
+    @Size(min = 6, max = 20)
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$")
     private String senha;
 }
