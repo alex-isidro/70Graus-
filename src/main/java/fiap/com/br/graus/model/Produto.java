@@ -1,12 +1,11 @@
 package fiap.com.br.graus.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -47,4 +46,6 @@ public class Produto {
     @NotBlank
     private String categoria;
 
+    @OneToMany(mappedBy = "produto")
+    private List<Estoque> estoques;
 }

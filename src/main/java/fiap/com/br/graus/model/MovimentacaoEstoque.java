@@ -1,10 +1,8 @@
 package fiap.com.br.graus.model;
 
 import java.time.LocalDate;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -16,12 +14,6 @@ public class MovimentacaoEstoque {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    private Long estoqueId;
-
-    @NotNull
-    private Long funcionarioId;
-
     @NotBlank
     private String tipoMovimentacao;
 
@@ -31,4 +23,12 @@ public class MovimentacaoEstoque {
 
     @NotNull
     private LocalDate dataMovimentacao;
+
+    @ManyToOne
+    @JoinColumn(name = "estoque_id")
+    private Estoque estoque;
+
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")
+    private Funcionario funcionario;
 }

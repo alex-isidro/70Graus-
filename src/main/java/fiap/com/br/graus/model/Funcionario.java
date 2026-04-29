@@ -1,11 +1,10 @@
 package fiap.com.br.graus.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -25,4 +24,7 @@ public class Funcionario {
     @Size(min = 6, max = 20)
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$")
     private String senha;
+
+    @OneToMany(mappedBy = "funcionario")
+    private List<MovimentacaoEstoque> movimentacoes;
 }

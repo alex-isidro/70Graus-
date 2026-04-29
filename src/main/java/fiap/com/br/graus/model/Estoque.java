@@ -1,12 +1,11 @@
 package fiap.com.br.graus.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -14,8 +13,12 @@ public class Estoque {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    private Long produtoId;
+    @ManyToOne
+    @JoinColumn(name = "produto_id")
+    private Produto produto;
+
+    @OneToMany(mappedBy = "estoque")
+    private List<MovimentacaoEstoque> movimentacoes;
 
     @NotNull
     @Min(0)
