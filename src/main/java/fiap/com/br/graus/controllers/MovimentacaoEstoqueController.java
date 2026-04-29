@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("movi-estoque")
 @Slf4j
-public class movimentacaoEstoqueController {
+public class MovimentacaoEstoqueController {
 
     @Autowired
     private MovimentacaoEstoqueService service;
