@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -43,5 +44,15 @@ public class ProdutoService {
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Produto com id " + id + " não encontrado")
         );
+    }
+    public List<Produto> getByNome(String nome) {
+        return repository.findByNomeContainingIgnoreCase(nome);
+    }
+
+    public List<Produto> getByPrecoRange(BigDecimal min, BigDecimal max) {
+        return repository.findByPrecoBetween(min, max);
+    }
+    public List<Produto> getByTamanho(String tamanho) {
+        return repository.findByTamanhoIgnoreCase(tamanho);
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -47,5 +48,22 @@ public class ProdutoController {
     public ResponseEntity<Produto> updateProduto(@PathVariable Long id, @RequestBody Produto produto) {
         log.info("Atualizando produto com id {} com os dados {}", id, produto);
         return ResponseEntity.ok(service.updateProduto(id, produto));
+    }
+
+    @GetMapping("/nome")
+    public List<Produto> buscarPorNome(@RequestParam String nome) {
+        return service.getByNome(nome);
+    }
+
+    @GetMapping("/preco")
+    public List<Produto> buscarPorPreco(
+            @RequestParam BigDecimal min,
+            @RequestParam BigDecimal max) {
+        return service.getByPrecoRange(min, max);
+    }
+
+    @GetMapping("/tamanho")
+    public List<Produto> buscarPorTamanho(@RequestParam String tamanho) {
+        return service.getByTamanho(tamanho);
     }
 }
