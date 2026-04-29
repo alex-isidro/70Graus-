@@ -20,6 +20,7 @@ public class DataLoader implements CommandLineRunner {
          p1.setCor("Branco");
          p1.setMarca("70 Graus");
          p1.setAtivo(true);
+         p1.setCategoria("Camisetas");
          produtoRepository.save(p1);
 
          Produto p2 = new Produto();
@@ -31,6 +32,7 @@ public class DataLoader implements CommandLineRunner {
          p2.setCor("Azul Escuro");
          p2.setMarca("70 Graus");
          p2.setAtivo(true);
+         p2.setCategoria("Calças");
          produtoRepository.save(p2);
 
          Produto p3 = new Produto();
@@ -42,6 +44,7 @@ public class DataLoader implements CommandLineRunner {
          p3.setCor("Preto");
          p3.setMarca("70 Graus");
          p3.setAtivo(true);
+         p3.setCategoria("Jaquetas");
          produtoRepository.save(p3);
 
          Produto p4 = new Produto();
@@ -53,6 +56,7 @@ public class DataLoader implements CommandLineRunner {
          p4.setCor("Rosa");
          p4.setMarca("70 Graus");
          p4.setAtivo(true);
+         p4.setCategoria("Vestidos");
          produtoRepository.save(p4);
 
          Produto p5 = new Produto();
@@ -64,6 +68,7 @@ public class DataLoader implements CommandLineRunner {
          p5.setCor("Bege");
          p5.setMarca("70 Graus");
          p5.setAtivo(true);
+         p5.setCategoria("Bermudas");
          produtoRepository.save(p5);
 
          Produto p6 = new Produto();
@@ -75,6 +80,7 @@ public class DataLoader implements CommandLineRunner {
          p6.setCor("Cinza");
          p6.setMarca("70 Graus");
          p6.setAtivo(true);
+         p6.setCategoria("Blusas");
          produtoRepository.save(p6);
 
          Produto p7 = new Produto();
@@ -86,6 +92,7 @@ public class DataLoader implements CommandLineRunner {
          p7.setCor("Preto");
          p7.setMarca("70 Graus");
          p7.setAtivo(true);
+         p7.setCategoria("Leggings");
          produtoRepository.save(p7);
 
          Produto p8 = new Produto();
@@ -97,6 +104,7 @@ public class DataLoader implements CommandLineRunner {
          p8.setCor("Branco");
          p8.setMarca("70 Graus");
          p8.setAtivo(true);
+         p8.setCategoria("Camisa");
          produtoRepository.save(p8);
 
          Produto p9 = new Produto();
@@ -108,6 +116,7 @@ public class DataLoader implements CommandLineRunner {
          p9.setCor("Natural");
          p9.setMarca("70 Graus");
          p9.setAtivo(true);
+         p9.setCategoria("Shorts");
          produtoRepository.save(p9);
 
          Produto p10 = new Produto();
@@ -119,6 +128,7 @@ public class DataLoader implements CommandLineRunner {
          p10.setCor("Vermelho");
          p10.setMarca("70 Graus");
          p10.setAtivo(true);
+         p10.setCategoria("Cardigans");
          produtoRepository.save(p10);
      }
 }

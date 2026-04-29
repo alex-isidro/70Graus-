@@ -22,5 +22,6 @@ public class Produto {
     private String cor;
     private String marca;
     private Boolean ativo;
+    private String categoria;
 
 }

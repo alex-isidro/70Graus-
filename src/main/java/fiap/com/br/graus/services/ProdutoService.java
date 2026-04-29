@@ -55,4 +55,11 @@ public class ProdutoService {
     public List<Produto> getByTamanho(String tamanho) {
         return repository.findByTamanhoIgnoreCase(tamanho);
     }
+
+    public List<Produto> getByCategoria(String categoria) {
+        return repository.findByCategoriaIgnoreCase(categoria);
+    }
+    public List<Produto> getByCor(String cor) {
+        return repository.findByCorIgnoreCase(cor);
+    }
 }

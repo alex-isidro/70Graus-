@@ -66,4 +66,13 @@ public class ProdutoController {
     public List<Produto> buscarPorTamanho(@RequestParam String tamanho) {
         return service.getByTamanho(tamanho);
     }
+    @GetMapping("/categoria")
+    public List<Produto> buscarPorCategoria(@RequestParam String categoria) {
+        return service.getByCategoria(categoria);
+    }
+
+    @GetMapping("/cor")
+    public List<Produto> buscarPorCor(@RequestParam String cor) {
+        return service.getByCor(cor);
+    }
 }
