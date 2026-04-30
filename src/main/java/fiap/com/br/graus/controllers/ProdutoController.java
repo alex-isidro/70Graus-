@@ -4,6 +4,7 @@ import fiap.com.br.graus.dto.PageResponse;
 import fiap.com.br.graus.model.Produto;
 import fiap.com.br.graus.projection.ProdutoSummary;
 import fiap.com.br.graus.services.ProdutoService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -23,13 +28,15 @@ public class ProdutoController {
     @Autowired
     private ProdutoService service;
 
-    @GetMapping
-    public List<Produto> listAll() {
-        return service.getAllProdutos();
+    @GetMapping("/paginado")
+    public ResponseEntity<Page<Produto>> listarPaginado(
+            @PageableDefault(size = 5, sort = "nome", direction = Sort.Direction.ASC) Pageable pageable
+    ) {
+        return ResponseEntity.ok(service.getAllProdutosPaginado(pageable));
     }
 
     @PostMapping
-    public ResponseEntity<Produto> createProduto(@RequestBody Produto produto) {
+    public ResponseEntity<Produto> createProduto(@RequestBody @Valid Produto produto) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(service.addProduto(produto));
@@ -49,7 +56,7 @@ public class ProdutoController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Produto> updateProduto(@PathVariable Long id, @RequestBody Produto produto) {
+    public ResponseEntity<Produto> updateProduto(@PathVariable Long id, @RequestBody  @Valid Produto produto) {
         log.info("Atualizando produto com id {} com os dados {}", id, produto);
         return ResponseEntity.ok(service.updateProduto(id, produto));
     }

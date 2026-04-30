@@ -2,6 +2,7 @@ package fiap.com.br.graus.model;
 
 import java.time.LocalDate;
 
+import fiap.com.br.graus.validation.TipoMovimentacaoValida;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -15,6 +16,7 @@ public class MovimentacaoEstoque {
     private Long id;
 
     @NotBlank
+    @TipoMovimentacaoValida
     private String tipoMovimentacao;
 
     @NotNull
@@ -24,11 +26,15 @@ public class MovimentacaoEstoque {
     @NotNull
     private LocalDate dataMovimentacao;
 
-    @ManyToOne
-    @JoinColumn(name = "estoque_id")
+    @NotNull
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "estoque_id", nullable = false)
     private Estoque estoque;
 
-    @ManyToOne
-    @JoinColumn(name = "funcionario_id")
+    @NotNull
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "funcionario_id", nullable = false)
     private Funcionario funcionario;
+
+
 }

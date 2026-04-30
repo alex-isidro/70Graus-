@@ -1,9 +1,9 @@
 package fiap.com.br.graus.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -45,6 +45,7 @@ public class Produto {
     @NotBlank
     private String categoria;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "produto")
     private List<Estoque> estoques;
 }
