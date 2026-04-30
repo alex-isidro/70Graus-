@@ -1,20 +1,16 @@
 package fiap.com.br.graus.dto;
 
+import lombok.AllArgsConstructor;
+
 import java.util.List;
 
+@AllArgsConstructor
 public class PageResponse<T> {
 
     private List<T> data;
     private int pagina;
     private int totalPaginas;
     private long totalElementos;
-
-    public PageResponse(List<T> data, int pagina, int totalPaginas, long totalElementos) {
-        this.data = data;
-        this.pagina = pagina;
-        this.totalPaginas = totalPaginas;
-        this.totalElementos = totalElementos;
-    }
 
     public List<T> getData() {
         return data;
