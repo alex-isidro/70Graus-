@@ -109,250 +109,244 @@
             "method": "GET",
             "url": "http://localhost:8080/produtos/paginado?page=0&size=5&sort=nome,asc"
           }
-        },
-
-    {
-      "name": "Estoque - CRUD e Filtros",
-      "item": [
-        {
-          "name": "Criar estoque",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": "http://localhost:8080/estoque",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"produto\": {\n    \"id\": 1\n  },\n  \"quantidadeDisponivel\": 25,\n  \"quantidadeMinima\": 5\n}"
-            }
-          }
-        },
-        {
-          "name": "Listar estoques",
-          "request": {
-            "method": "GET",
-            "url": "http://localhost:8080/estoque"
-          }
-        },
-        {
-          "name": "Buscar estoque por ID",
-          "request": {
-            "method": "GET",
-            "url": "http://localhost:8080/estoque/1"
-          }
-        },
-        {
-          "name": "Atualizar estoque",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": "http://localhost:8080/estoque/1",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"produto\": {\n    \"id\": 1\n  },\n  \"quantidadeDisponivel\": 40,\n  \"quantidadeMinima\": 10\n}"
-            }
-          }
-        },
-        {
-          "name": "Listar estoques baixos",
-          "request": {
-            "method": "GET",
-            "url": "http://localhost:8080/estoque/baixo"
-          }
-        },
-        {
-          "name": "Deletar estoque",
-          "request": {
-            "method": "DELETE",
-            "url": "http://localhost:8080/estoque/11"
-          }
         }
       ]
     },
-    {
-      "name": "Funcionários - CRUD",
-      "item": [
         {
-          "name": "Criar funcionário",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
+          "name": "Estoque - CRUD e Filtros",
+          "item": [
+            {
+              "name": "Criar estoque",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "http://localhost:8080/estoque",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"produto\": {\n    \"id\": 1\n  },\n  \"quantidadeDisponivel\": 25,\n  \"quantidadeMinima\": 5\n}"
+                }
               }
-            ],
-            "url": "http://localhost:8080/funcionario",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"nome\": \"Kelson\",\n  \"email\": \"kelson@email.com\",\n  \"senha\": \"123456\"\n}"
-            }
-          }
-        },
-        {
-          "name": "Listar funcionários",
-          "request": {
-            "method": "GET",
-            "url": "http://localhost:8080/funcionario"
-          }
-        },
-        {
-          "name": "Buscar funcionário por ID",
-          "request": {
-            "method": "GET",
-            "url": "http://localhost:8080/funcionario/11"
-          }
-        },
-        {
-          "name": "Atualizar funcionário",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
+            },
+            {
+              "name": "Listar estoques",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost:8080/estoque"
               }
-            ],
-            "url": "http://localhost:8080/funcionario/1",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"nome\": \"Kelson Silva\",\n  \"email\": \"kelson.silva@email.com\",\n  \"senha\": \"123456\"\n}"
-            }
-          }
-        },
-        {
-          "name": "Deletar funcionário",
-          "request": {
-            "method": "DELETE",
-            "url": "http://localhost:8080/funcionario/2"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Movimentação de Estoque - CRUD",
-      "item": [
-        {
-          "name": "Criar movimentação de entrada",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
+            },
+            {
+              "name": "Buscar estoque por ID",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost:8080/estoque/1"
               }
-            ],
-            "url": "http://localhost:8080/movi-estoque",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"estoque\": {\n    \"id\": 1\n  },\n  \"funcionario\": {\n    \"id\": 1\n  },\n  \"tipoMovimentacao\": \"ENTRADA\",\n  \"quantidade\": 10,\n  \"dataMovimentacao\": \"2026-04-29\"\n}"
-            }
-          }
-        },
-        {
-          "name": "Criar movimentação de saída",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
+            },
+            {
+              "name": "Atualizar estoque",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "http://localhost:8080/estoque/1",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"produto\": {\n    \"id\": 1\n  },\n  \"quantidadeDisponivel\": 40,\n  \"quantidadeMinima\": 10\n}"
+                }
               }
-            ],
-            "url": "http://localhost:8080/movi-estoque",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"estoque\": {\n    \"id\": 1\n  },\n  \"funcionario\": {\n    \"id\": 1\n  },\n  \"tipoMovimentacao\": \"SAIDA\",\n  \"quantidade\": 3,\n  \"dataMovimentacao\": \"2026-04-29\"\n}"
-            }
-          }
-        },
-        {
-          "name": "Listar movimentações",
-          "request": {
-            "method": "GET",
-            "url": "http://localhost:8080/movi-estoque"
-          }
-        },
-        {
-          "name": "Buscar movimentação por ID",
-          "request": {
-            "method": "GET",
-            "url": "http://localhost:8080/movi-estoque/1"
-          }
-        },
-        {
-          "name": "Atualizar movimentação",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
+            },
+            {
+              "name": "Deletar estoque",
+              "request": {
+                "method": "DELETE",
+                "url": "http://localhost:8080/estoque/11"
               }
-            ],
-            "url": "http://localhost:8080/movi-estoque/1",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"estoque\": {\n    \"id\": 1\n  },\n  \"funcionario\": {\n    \"id\": 1\n  },\n  \"tipoMovimentacao\": \"ENTRADA\",\n  \"quantidade\": 15,\n  \"dataMovimentacao\": \"2026-04-29\"\n}"
             }
-          }
+          ]
         },
         {
-          "name": "Deletar movimentação",
-          "request": {
-            "method": "DELETE",
-            "url": "http://localhost:8080/movi-estoque/11"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Validações",
-      "item": [
-        {
-          "name": "Teste validação padrão - produto inválido",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
+          "name": "Funcionários - CRUD",
+          "item": [
+            {
+              "name": "Criar funcionário",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "http://localhost:8080/funcionario",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nome\": \"Kelson\",\n  \"email\": \"kelson@email.com\",\n  \"senha\": \"Senha123\"\n}"
+                }
               }
-            ],
-            "url": "http://localhost:8080/produtos",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"nome\": \"\",\n  \"descricao\": \"\",\n  \"preco\": -10,\n  \"sku\": \"\",\n  \"tamanho\": \"\",\n  \"cor\": \"\",\n  \"marca\": \"\",\n  \"ativo\": true,\n  \"categoria\": \"\"\n}"
+            },
+            {
+              "name": "Listar funcionários",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost:8080/funcionario"
+              }
+            },
+            {
+              "name": "Buscar funcionário por ID",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost:8080/funcionario/11"
+              }
+            },
+            {
+              "name": "Atualizar funcionário",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "http://localhost:8080/funcionario/1",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nome\": \"Kelson Silva\",\n  \"email\": \"kelson.silva@email.com\",\n  \"senha\": \"Senha123\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Deletar funcionário",
+              "request": {
+                "method": "DELETE",
+                "url": "http://localhost:8080/funcionario/2"
+              }
             }
-          }
+          ]
         },
         {
-          "name": "Teste validação personalizada - tipo de movimentação inválido",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
+          "name": "Movimentação de Estoque - CRUD",
+          "item": [
+            {
+              "name": "Criar movimentação de entrada",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "http://localhost:8080/movi-estoque",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"estoque\": {\n    \"id\": 1\n  },\n  \"funcionario\": {\n    \"id\": 1\n  },\n  \"tipoMovimentacao\": \"ENTRADA\",\n  \"quantidade\": 10,\n  \"dataMovimentacao\": \"2026-04-29\"\n}"
+                }
               }
-            ],
-            "url": "http://localhost:8080/movi-estoque",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"estoque\": {\n    \"id\": 1\n  },\n  \"funcionario\": {\n    \"id\": 1\n  },\n  \"tipoMovimentacao\": \"TRANSFERENCIA\",\n  \"quantidade\": 10,\n  \"dataMovimentacao\": \"2026-04-29\"\n}"
+            },
+            {
+              "name": "Criar movimentação de saída",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "http://localhost:8080/movi-estoque",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"estoque\": {\n    \"id\": 1\n  },\n  \"funcionario\": {\n    \"id\": 1\n  },\n  \"tipoMovimentacao\": \"SAIDA\",\n  \"quantidade\": 3,\n  \"dataMovimentacao\": \"2026-04-29\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Listar movimentações",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost:8080/movi-estoque"
+              }
+            },
+            {
+              "name": "Buscar movimentação por ID",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost:8080/movi-estoque/1"
+              }
+            },
+            {
+              "name": "Atualizar movimentação",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "http://localhost:8080/movi-estoque/1",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"estoque\": {\n    \"id\": 1\n  },\n  \"funcionario\": {\n    \"id\": 1\n  },\n  \"tipoMovimentacao\": \"ENTRADA\",\n  \"quantidade\": 15,\n  \"dataMovimentacao\": \"2026-04-29\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Deletar movimentação",
+              "request": {
+                "method": "DELETE",
+                "url": "http://localhost:8080/movi-estoque/11"
+              }
             }
-          }
+          ]
+        },
+        {
+          "name": "Validações",
+          "item": [
+            {
+              "name": "Teste validação padrão - produto inválido",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "http://localhost:8080/produtos",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nome\": \"\",\n  \"descricao\": \"\",\n  \"preco\": -10,\n  \"sku\": \"\",\n  \"tamanho\": \"\",\n  \"cor\": \"\",\n  \"marca\": \"\",\n  \"ativo\": true,\n  \"categoria\": \"\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Teste validação personalizada - tipo de movimentação inválido",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "http://localhost:8080/movi-estoque",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"estoque\": {\n    \"id\": 1\n  },\n  \"funcionario\": {\n    \"id\": 1\n  },\n  \"tipoMovimentacao\": \"TRANSFERENCIA\",\n  \"quantidade\": 10,\n  \"dataMovimentacao\": \"2026-04-29\"\n}"
+                }
+              }
+            }
+          ]
         }
       ]
     }
-  ]
-}
