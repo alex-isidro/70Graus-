@@ -109,13 +109,6 @@
             "method": "GET",
             "url": "http://localhost:8080/produtos/paginado?page=0&size=5&sort=nome,asc"
           }
-        },
-        {
-          "name": "Projection - resumo dos produtos",
-          "request": {
-            "method": "GET",
-            "url": "http://localhost:8080/produtos/resumo?nome=camiseta"
-          }
         }
       ]
     },
@@ -171,13 +164,6 @@
           }
         },
         {
-          "name": "Listar estoques baixos",
-          "request": {
-            "method": "GET",
-            "url": "http://localhost:8080/estoque/baixo"
-          }
-        },
-        {
           "name": "Deletar estoque",
           "request": {
             "method": "DELETE",
@@ -202,7 +188,7 @@
             "url": "http://localhost:8080/funcionario",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nome\": \"Kelson\",\n  \"email\": \"kelson@email.com\",\n  \"senha\": \"123456\"\n}"
+              "raw": "{\n  \"nome\": \"Kelson\",\n  \"email\": \"kelson@email.com\",\n  \"senha\": \"Kelson1\"\n}"
             }
           }
         },
@@ -233,7 +219,7 @@
             "url": "http://localhost:8080/funcionario/1",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nome\": \"Kelson Silva\",\n  \"email\": \"kelson.silva@email.com\",\n  \"senha\": \"123456\"\n}"
+              "raw": "{\n  \"nome\": \"Kelson Silva\",\n  \"email\": \"kelson.silva@email.com\",\n  \"senha\": \"Kelson123\"\n}"
             }
           }
         },

@@ -1,136 +1,214 @@
 package fiap.com.br.graus.data;
 
+import fiap.com.br.graus.model.Estoque;
+import fiap.com.br.graus.model.Funcionario;
+import fiap.com.br.graus.model.MovimentacaoEstoque;
 import fiap.com.br.graus.model.Produto;
+import fiap.com.br.graus.repositories.EstoqueRepository;
+import fiap.com.br.graus.repositories.FuncionarioRepository;
 import fiap.com.br.graus.repositories.ProdutoRepository;
+import fiap.com.br.graus.services.MovimentacaoEstoqueService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Component
 @RequiredArgsConstructor
 public class DataLoader implements CommandLineRunner {
+
     private final ProdutoRepository produtoRepository;
-     public void run(String... args) throws Exception {
-         Produto p1 = new Produto();
-         p1.setNome("Camiseta Básica Branca");
-         p1.setDescricao("Camiseta 100% algodão, confortável e versátil");
-         p1.setPreco(new BigDecimal("49.90"));
-         p1.setSku("SKUCB001");
-         p1.setTamanho("M");
-         p1.setCor("Branco");
-         p1.setMarca("70 Graus");
-         p1.setAtivo(true);
-         p1.setCategoria("Camisetas");
-         produtoRepository.save(p1);
+    private final EstoqueRepository estoqueRepository;
+    private final FuncionarioRepository funcionarioRepository;
+    private final MovimentacaoEstoqueService movimentacaoEstoqueService;
 
-         Produto p2 = new Produto();
-         p2.setNome("Calça Jeans Azul");
-         p2.setDescricao("Calça jeans tradicional, resistente e durável");
-         p2.setPreco(new BigDecimal("129.90"));
-         p2.setSku("SKUCJ002");
-         p2.setTamanho("G");
-         p2.setCor("Azul Escuro");
-         p2.setMarca("70 Graus");
-         p2.setAtivo(true);
-         p2.setCategoria("Calças");
-         produtoRepository.save(p2);
+    @Override
+    public void run(String... args) throws Exception {
 
-         Produto p3 = new Produto();
-         p3.setNome("Jaqueta de Inverno");
-         p3.setDescricao("Jaqueta acolchoada, impermeável e quentinha");
-         p3.setPreco(new BigDecimal("299.90"));
-         p3.setSku("SKUJI003");
-         p3.setTamanho("G");
-         p3.setCor("Preto");
-         p3.setMarca("70 Graus");
-         p3.setAtivo(true);
-         p3.setCategoria("Jaquetas");
-         produtoRepository.save(p3);
+        Produto p1 = criarProduto(
+                "Camiseta Básica Branca",
+                "Camiseta 100% algodão, confortável e versátil",
+                "49.90",
+                "SKUCB001",
+                "M",
+                "Branco",
+                "70 Graus",
+                "Camisetas"
+        );
 
-         Produto p4 = new Produto();
-         p4.setNome("Vestido Floral");
-         p4.setDescricao("Vestido elegante com estampa floral");
-         p4.setPreco(new BigDecimal("189.90"));
-         p4.setSku("SKUVF004");
-         p4.setTamanho("P");
-         p4.setCor("Rosa");
-         p4.setMarca("70 Graus");
-         p4.setAtivo(true);
-         p4.setCategoria("Vestidos");
-         produtoRepository.save(p4);
+        Produto p2 = criarProduto(
+                "Calça Jeans Azul",
+                "Calça jeans tradicional, resistente e durável",
+                "129.90",
+                "SKUCJ002",
+                "G",
+                "Azul Escuro",
+                "70 Graus",
+                "Calças"
+        );
 
-         Produto p5 = new Produto();
-         p5.setNome("Bermuda Casual");
-         p5.setDescricao("Bermuda confortável para uso casual");
-         p5.setPreco(new BigDecimal("79.90"));
-         p5.setSku("SKUBC005");
-         p5.setTamanho("M");
-         p5.setCor("Bege");
-         p5.setMarca("70 Graus");
-         p5.setAtivo(true);
-         p5.setCategoria("Bermudas");
-         produtoRepository.save(p5);
+        Produto p3 = criarProduto(
+                "Jaqueta de Inverno",
+                "Jaqueta acolchoada, impermeável e quentinha",
+                "299.90",
+                "SKUJI003",
+                "G",
+                "Preto",
+                "70 Graus",
+                "Jaquetas"
+        );
 
-         Produto p6 = new Produto();
-         p6.setNome("Blusa de Malha");
-         p6.setDescricao("Blusa meia malha, perfeita para compor looks");
-         p6.setPreco(new BigDecimal("69.90"));
-         p6.setSku("SKUBM006");
-         p6.setTamanho("G");
-         p6.setCor("Cinza");
-         p6.setMarca("70 Graus");
-         p6.setAtivo(true);
-         p6.setCategoria("Blusas");
-         produtoRepository.save(p6);
+        Produto p4 = criarProduto(
+                "Vestido Floral",
+                "Vestido elegante com estampa floral",
+                "189.90",
+                "SKUVF004",
+                "P",
+                "Rosa",
+                "70 Graus",
+                "Vestidos"
+        );
 
-         Produto p7 = new Produto();
-         p7.setNome("Legging Preta");
-         p7.setDescricao("Legging confortável com ajuste perfeito");
-         p7.setPreco(new BigDecimal("89.90"));
-         p7.setSku("SKUL007");
-         p7.setTamanho("M");
-         p7.setCor("Preto");
-         p7.setMarca("70 Graus");
-         p7.setAtivo(true);
-         p7.setCategoria("Leggings");
-         produtoRepository.save(p7);
+        Produto p5 = criarProduto(
+                "Bermuda Casual",
+                "Bermuda confortável para uso casual",
+                "79.90",
+                "SKUBC005",
+                "M",
+                "Bege",
+                "70 Graus",
+                "Bermudas"
+        );
 
-         Produto p8 = new Produto();
-         p8.setNome("Camisa Social Branca");
-         p8.setDescricao("Camisa social em algodão, ideal para ambientes profissionais");
-         p8.setPreco(new BigDecimal("139.90"));
-         p8.setSku("SKUCS008");
-         p8.setTamanho("GG");
-         p8.setCor("Branco");
-         p8.setMarca("70 Graus");
-         p8.setAtivo(true);
-         p8.setCategoria("Camisa");
-         produtoRepository.save(p8);
+        Produto p6 = criarProduto(
+                "Blusa de Malha",
+                "Blusa meia malha, perfeita para compor looks",
+                "69.90",
+                "SKUBM006",
+                "G",
+                "Cinza",
+                "70 Graus",
+                "Blusas"
+        );
 
-         Produto p9 = new Produto();
-         p9.setNome("Shorts Linho");
-         p9.setDescricao("Shorts em linho, fresco e elegante");
-         p9.setPreco(new BigDecimal("99.90"));
-         p9.setSku("SKUSL009");
-         p9.setTamanho("P");
-         p9.setCor("Natural");
-         p9.setMarca("70 Graus");
-         p9.setAtivo(true);
-         p9.setCategoria("Shorts");
-         produtoRepository.save(p9);
+        Produto p7 = criarProduto(
+                "Legging Preta",
+                "Legging confortável com ajuste perfeito",
+                "89.90",
+                "SKUL007",
+                "M",
+                "Preto",
+                "70 Graus",
+                "Leggings"
+        );
 
-         Produto p10 = new Produto();
-         p10.setNome("Cardigan Confortável");
-         p10.setDescricao("Cardigan em tricô, macio e aconchegante");
-         p10.setPreco(new BigDecimal("159.90"));
-         p10.setSku("SKUCARD010");
-         p10.setTamanho("M");
-         p10.setCor("Vermelho");
-         p10.setMarca("70 Graus");
-         p10.setAtivo(true);
-         p10.setCategoria("Cardigans");
-         produtoRepository.save(p10);
-     }
+        Produto p8 = criarProduto(
+                "Camisa Social Branca",
+                "Camisa social em algodão, ideal para ambientes profissionais",
+                "139.90",
+                "SKUCS008",
+                "GG",
+                "Branco",
+                "70 Graus",
+                "Camisa"
+        );
+
+        Produto p9 = criarProduto(
+                "Shorts Linho",
+                "Shorts em linho, fresco e elegante",
+                "99.90",
+                "SKUSL009",
+                "P",
+                "Natural",
+                "70 Graus",
+                "Shorts"
+        );
+
+        Produto p10 = criarProduto(
+                "Cardigan Confortável",
+                "Cardigan em tricô, macio e aconchegante",
+                "159.90",
+                "SKUCARD010",
+                "M",
+                "Vermelho",
+                "70 Graus",
+                "Cardigans"
+        );
+
+        Funcionario funcionario = new Funcionario();
+        funcionario.setNome("Kelson");
+        funcionario.setEmail("kelson@email.com");
+        funcionario.setSenha("Senha123");
+        funcionarioRepository.save(funcionario);
+
+        Estoque e1 = criarEstoque(p1, 20, 5);
+        Estoque e2 = criarEstoque(p2, 15, 4);
+        Estoque e3 = criarEstoque(p3, 8, 2);
+        Estoque e4 = criarEstoque(p4, 12, 3);
+        Estoque e5 = criarEstoque(p5, 25, 5);
+        Estoque e6 = criarEstoque(p6, 18, 4);
+        Estoque e7 = criarEstoque(p7, 30, 6);
+        Estoque e8 = criarEstoque(p8, 10, 2);
+        Estoque e9 = criarEstoque(p9, 22, 5);
+        Estoque e10 = criarEstoque(p10, 9, 2);
+
+        criarMovimentacao(e1, funcionario, "ENTRADA", 10);
+        criarMovimentacao(e1, funcionario, "SAIDA", 3);
+
+        criarMovimentacao(e2, funcionario, "ENTRADA", 5);
+        criarMovimentacao(e3, funcionario, "SAIDA", 2);
+        criarMovimentacao(e5, funcionario, "ENTRADA", 8);
+        criarMovimentacao(e7, funcionario, "SAIDA", 4);
+    }
+
+    private Produto criarProduto(
+            String nome,
+            String descricao,
+            String preco,
+            String sku,
+            String tamanho,
+            String cor,
+            String marca,
+            String categoria
+    ) {
+        Produto produto = new Produto();
+        produto.setNome(nome);
+        produto.setDescricao(descricao);
+        produto.setPreco(new BigDecimal(preco));
+        produto.setSku(sku);
+        produto.setTamanho(tamanho);
+        produto.setCor(cor);
+        produto.setMarca(marca);
+        produto.setAtivo(true);
+        produto.setCategoria(categoria);
+
+        return produtoRepository.save(produto);
+    }
+
+    private Estoque criarEstoque(Produto produto, Integer quantidadeDisponivel, Integer quantidadeMinima) {
+        Estoque estoque = new Estoque();
+        estoque.setProduto(produto);
+        estoque.setQuantidadeDisponivel(quantidadeDisponivel);
+        estoque.setQuantidadeMinima(quantidadeMinima);
+
+        return estoqueRepository.save(estoque);
+    }
+
+    private void criarMovimentacao(
+            Estoque estoque,
+            Funcionario funcionario,
+            String tipoMovimentacao,
+            Integer quantidade
+    ) {
+        MovimentacaoEstoque movimentacao = new MovimentacaoEstoque();
+        movimentacao.setEstoque(estoque);
+        movimentacao.setFuncionario(funcionario);
+        movimentacao.setTipoMovimentacao(tipoMovimentacao);
+        movimentacao.setQuantidade(quantidade);
+        movimentacao.setDataMovimentacao(LocalDate.now());
+
+        movimentacaoEstoqueService.add(movimentacao);
+    }
 }
