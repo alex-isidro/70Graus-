@@ -1,26 +1,33 @@
 package fiap.com.br.graus.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
 public class Funcionario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
+    @Size(min = 3, max = 40)
     private String nome;
 
+    @NotBlank
     @Email(message = "Email inválido")
     private String email;
 
-    @Size(min = 6, message = "Senha deve ter no mínimo 6 caracteres")
+    @NotBlank
+    @Size(min = 6, max = 20)
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$",
+            message = "A senha deve conter pelo menos uma letra maiúscula, uma minúscula e um número")
     private String senha;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "funcionario")
+    private List<MovimentacaoEstoque> movimentacoes;
 }

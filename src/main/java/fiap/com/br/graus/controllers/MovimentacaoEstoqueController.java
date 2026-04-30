@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("movi-estoque")
 @Slf4j
-public class movimentacaoEstoqueController {
+public class MovimentacaoEstoqueController {
 
     @Autowired
     private MovimentacaoEstoqueService service;
@@ -41,7 +41,10 @@ public class movimentacaoEstoqueController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<MovimentacaoEstoque> update(@PathVariable Long id, @RequestBody MovimentacaoEstoque movimentacaoEstoque) {
+    public ResponseEntity<MovimentacaoEstoque> update(
+            @PathVariable Long id,
+            @RequestBody @Valid MovimentacaoEstoque movimentacaoEstoque
+    ) {
         return ResponseEntity.ok(service.update(id, movimentacaoEstoque));
     }
 }

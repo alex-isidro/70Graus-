@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import fiap.com.br.graus.repositories.FuncionarioRepository;
+import fiap.com.br.graus.model.Funcionario;
 
 import java.util.List;
 
@@ -19,6 +21,9 @@ public class MovimentacaoEstoqueService {
     private EstoqueRepository estoqueRepository;
     @Autowired
     private MovimentacaoEstoqueRepository repository;
+
+    @Autowired
+    private FuncionarioRepository funcionarioRepository;
 
     private MovimentacaoEstoque findmovimentacaoById(Long id) {
         return repository.findById(id).orElseThrow(
@@ -31,17 +36,28 @@ public class MovimentacaoEstoqueService {
         return repository.findAll();
     }
 
-    public MovimentacaoEstoque add(MovimentacaoEstoque movimentacao){
-        Estoque estoque = estoqueRepository.findById(movimentacao.getEstoqueId())
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "Estoque não encontrado"
-                ));
+    public MovimentacaoEstoque add(MovimentacaoEstoque movimentacao) {
+        Estoque estoque = estoqueRepository.findById(
+                movimentacao.getEstoque().getId()
+        ).orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Estoque não encontrado"
+        ));
+
+        Funcionario funcionario = funcionarioRepository.findById(
+                movimentacao.getFuncionario().getId()
+        ).orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Funcionário não encontrado"
+        ));
 
         estoque.movimentar(
                 movimentacao.getQuantidade(),
                 movimentacao.getTipoMovimentacao().equalsIgnoreCase("ENTRADA")
         );
+
         estoqueRepository.save(estoque);
+
+        movimentacao.setEstoque(estoque);
+        movimentacao.setFuncionario(funcionario);
 
         return repository.save(movimentacao);
     }
