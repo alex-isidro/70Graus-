@@ -42,7 +42,10 @@ public class EstoqueController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Estoque> updateFuncionario(@PathVariable Long id, @RequestBody Estoque estoque) {
+    public ResponseEntity<Estoque> updateFuncionario(
+            @PathVariable Long id,
+            @RequestBody @Valid Estoque estoque
+    ) {
         return ResponseEntity.ok(service.update(id, estoque));
     }
 }

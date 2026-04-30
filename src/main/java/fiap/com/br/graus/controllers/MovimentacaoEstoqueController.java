@@ -41,7 +41,10 @@ public class MovimentacaoEstoqueController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<MovimentacaoEstoque> update(@PathVariable Long id, @RequestBody MovimentacaoEstoque movimentacaoEstoque) {
+    public ResponseEntity<MovimentacaoEstoque> update(
+            @PathVariable Long id,
+            @RequestBody @Valid MovimentacaoEstoque movimentacaoEstoque
+    ) {
         return ResponseEntity.ok(service.update(id, movimentacaoEstoque));
     }
 }
