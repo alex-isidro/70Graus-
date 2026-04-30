@@ -32,10 +32,11 @@ public class MovimentacaoEstoqueService {
     }
 
     public MovimentacaoEstoque add(MovimentacaoEstoque movimentacao){
-        Estoque estoque = estoqueRepository.findById(movimentacao.getEstoqueId())
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "Estoque não encontrado"
-                ));
+        Estoque estoque = estoqueRepository.findById(
+                movimentacao.getEstoque().getId()
+        ).orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Estoque não encontrado"
+        ));
 
         estoque.movimentar(
                 movimentacao.getQuantidade(),
