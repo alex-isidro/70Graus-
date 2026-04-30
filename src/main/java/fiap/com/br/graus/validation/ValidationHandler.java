@@ -1,9 +1,11 @@
 package fiap.com.br.graus.validation;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -23,6 +25,13 @@ public class ValidationHandler {
                 .stream()
                 .map(ValidationErrorResponse::new)
                 .toList();
+    }
+
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<String> handleResponseStatus(ResponseStatusException exception) {
+        return ResponseEntity
+                .status(exception.getStatusCode())
+                .body(exception.getReason());
     }
 
     @ExceptionHandler(RuntimeException.class)
