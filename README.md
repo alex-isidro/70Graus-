@@ -154,7 +154,9 @@ A persistência é feita com **H2 em memória**, o que facilita testes locais e 
 ### Cadastro de estoque
 ```json
 {
-  "produtoId": 1,
+  "produto": {
+    "id": 1
+  },
   "quantidadeDisponivel": 25,
   "quantidadeMinima": 5
 }
@@ -163,8 +165,12 @@ A persistência é feita com **H2 em memória**, o que facilita testes locais e 
 ### Cadastro de movimentação
 ```json
 {
-  "estoqueId": 1,
-  "funcionarioId": 1,
+  "estoque": {
+    "id": 1
+  },
+  "funcionario": {
+    "id": 1
+  },
   "tipoMovimentacao": "ENTRADA",
   "quantidade": 10,
   "dataMovimentacao": "2026-03-31"

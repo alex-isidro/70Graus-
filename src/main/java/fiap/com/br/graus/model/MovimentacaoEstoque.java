@@ -16,6 +16,7 @@ public class MovimentacaoEstoque {
     private Long id;
 
     @NotBlank
+    @TipoMovimentacaoValida
     private String tipoMovimentacao;
 
     @NotNull
@@ -25,15 +26,15 @@ public class MovimentacaoEstoque {
     @NotNull
     private LocalDate dataMovimentacao;
 
-    @ManyToOne
-    @JoinColumn(name = "estoque_id")
+    @NotNull
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "estoque_id", nullable = false)
     private Estoque estoque;
 
-    @ManyToOne
-    @JoinColumn(name = "funcionario_id")
+    @NotNull
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "funcionario_id", nullable = false)
     private Funcionario funcionario;
 
-    @NotBlank
-    @TipoMovimentacaoValida
-    private String tipoMovimentacao;
+
 }

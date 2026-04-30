@@ -14,8 +14,9 @@ public class Estoque {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "produto_id")
+    @NotNull
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "produto_id", nullable = false)
     private Produto produto;
 
     @JsonIgnore
