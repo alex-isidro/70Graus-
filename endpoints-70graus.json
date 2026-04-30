@@ -60,7 +60,7 @@
           "name": "Deletar produto",
           "request": {
             "method": "DELETE",
-            "url": "http://localhost:8080/produtos/1"
+            "url": "http://localhost:8080/produtos/11"
           }
         }
       ]
@@ -173,7 +173,7 @@
           "name": "Deletar estoque",
           "request": {
             "method": "DELETE",
-            "url": "http://localhost:8080/estoque/1"
+            "url": "http://localhost:8080/estoque/11"
           }
         }
       ]
@@ -209,7 +209,7 @@
           "name": "Buscar funcionário por ID",
           "request": {
             "method": "GET",
-            "url": "http://localhost:8080/funcionario/1"
+            "url": "http://localhost:8080/funcionario/11"
           }
         },
         {
@@ -233,7 +233,7 @@
           "name": "Deletar funcionário",
           "request": {
             "method": "DELETE",
-            "url": "http://localhost:8080/funcionario/1"
+            "url": "http://localhost:8080/funcionario/2"
           }
         }
       ]
@@ -310,7 +310,7 @@
           "name": "Deletar movimentação",
           "request": {
             "method": "DELETE",
-            "url": "http://localhost:8080/movi-estoque/1"
+            "url": "http://localhost:8080/movi-estoque/11"
           }
         }
       ]

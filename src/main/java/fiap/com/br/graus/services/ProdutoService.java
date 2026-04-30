@@ -1,7 +1,7 @@
 package fiap.com.br.graus.services;
 
 import fiap.com.br.graus.model.Produto;
-import fiap.com.br.graus.projection.ProdutoSummary; // 🔥 IMPORTANTE
+import fiap.com.br.graus.projection.ProdutoSummary;
 import fiap.com.br.graus.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,8 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.util.List;

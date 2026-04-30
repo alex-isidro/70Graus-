@@ -23,7 +23,8 @@ public class Funcionario {
 
     @NotBlank
     @Size(min = 6, max = 20)
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$",
+            message = "A senha deve conter pelo menos uma letra maiúscula, uma minúscula e um número")
     private String senha;
 
     @JsonIgnore
