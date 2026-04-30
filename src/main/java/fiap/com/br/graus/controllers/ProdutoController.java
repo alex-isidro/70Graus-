@@ -1,9 +1,12 @@
 package fiap.com.br.graus.controllers;
 
 import fiap.com.br.graus.model.Produto;
+import fiap.com.br.graus.projection.ProdutoSummary;
 import fiap.com.br.graus.services.ProdutoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,28 +54,38 @@ public class ProdutoController {
     }
 
     @GetMapping("/nome")
-    public List<Produto> buscarPorNome(@RequestParam String nome) {
-        return service.getByNome(nome);
+    public Page<ProdutoSummary> buscarPorNome(
+            @RequestParam String nome,
+            Pageable pageable) {
+        return service.getByNome(nome, pageable);
     }
 
     @GetMapping("/preco")
-    public List<Produto> buscarPorPreco(
+    public Page<ProdutoSummary> buscarPorPreco(
             @RequestParam BigDecimal min,
-            @RequestParam BigDecimal max) {
-        return service.getByPrecoRange(min, max);
+            @RequestParam BigDecimal max,
+            Pageable pageable) {
+        return service.getByPrecoRange(min, max, pageable);
     }
 
     @GetMapping("/tamanho")
-    public List<Produto> buscarPorTamanho(@RequestParam String tamanho) {
-        return service.getByTamanho(tamanho);
+    public Page<ProdutoSummary> buscarPorTamanho(
+            @RequestParam String tamanho,
+            Pageable pageable) {
+        return service.getByTamanho(tamanho, pageable);
     }
+
     @GetMapping("/categoria")
-    public List<Produto> buscarPorCategoria(@RequestParam String categoria) {
-        return service.getByCategoria(categoria);
+    public Page<ProdutoSummary> buscarPorCategoria(
+            @RequestParam String categoria,
+            Pageable pageable) {
+        return service.getByCategoria(categoria, pageable);
     }
 
     @GetMapping("/cor")
-    public List<Produto> buscarPorCor(@RequestParam String cor) {
-        return service.getByCor(cor);
+    public Page<ProdutoSummary> buscarPorCor(
+            @RequestParam String cor,
+            Pageable pageable) {
+        return service.getByCor(cor, pageable);
     }
 }

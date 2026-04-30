@@ -5,11 +5,11 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
 @Data
-@RestController
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +25,9 @@ public class Produto {
 
     @NotNull
     @DecimalMin("0.01")
-    private Double preco;
+    private BigDecimal preco;
 
     @NotBlank
-    @Pattern(regexp = "^SKU[A-Z0-9]{6,}$")
     private String sku;
 
     @NotBlank
