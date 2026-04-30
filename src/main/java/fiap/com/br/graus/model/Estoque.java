@@ -1,5 +1,6 @@
 package fiap.com.br.graus.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -17,6 +18,7 @@ public class Estoque {
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "estoque")
     private List<MovimentacaoEstoque> movimentacoes;
 

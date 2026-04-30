@@ -4,6 +4,7 @@ import fiap.com.br.graus.dto.PageResponse;
 import fiap.com.br.graus.model.Produto;
 import fiap.com.br.graus.projection.ProdutoSummary;
 import fiap.com.br.graus.services.ProdutoService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,7 +30,7 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> createProduto(@RequestBody Produto produto) {
+    public ResponseEntity<Produto> createProduto(@RequestBody @Valid Produto produto) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(service.addProduto(produto));
@@ -49,7 +50,7 @@ public class ProdutoController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Produto> updateProduto(@PathVariable Long id, @RequestBody Produto produto) {
+    public ResponseEntity<Produto> updateProduto(@PathVariable Long id, @RequestBody  @Valid Produto produto) {
         log.info("Atualizando produto com id {} com os dados {}", id, produto);
         return ResponseEntity.ok(service.updateProduto(id, produto));
     }
