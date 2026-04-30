@@ -28,6 +28,11 @@ public class ProdutoController {
     @Autowired
     private ProdutoService service;
 
+    @GetMapping
+    public List<Produto> listAll() {
+        return service.getAllProdutos();
+    }
+
     @GetMapping("/paginado")
     public ResponseEntity<Page<Produto>> listarPaginado(
             @PageableDefault(size = 5, sort = "nome", direction = Sort.Direction.ASC) Pageable pageable
