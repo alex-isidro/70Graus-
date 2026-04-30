@@ -1,5 +1,6 @@
 package fiap.com.br.graus.controllers;
 
+import fiap.com.br.graus.dto.PageResponse;
 import fiap.com.br.graus.model.Produto;
 import fiap.com.br.graus.projection.ProdutoSummary;
 import fiap.com.br.graus.services.ProdutoService;
@@ -54,38 +55,76 @@ public class ProdutoController {
     }
 
     @GetMapping("/nome")
-    public Page<ProdutoSummary> buscarPorNome(
+    public PageResponse<ProdutoSummary> buscarPorNome(
             @RequestParam String nome,
             Pageable pageable) {
-        return service.getByNome(nome, pageable);
+
+        Page<ProdutoSummary> page = service.getByNome(nome, pageable);
+
+        return new PageResponse<>(
+                page.getContent(),
+                page.getNumber(),
+                page.getTotalPages(),
+                page.getTotalElements()
+        );
     }
 
     @GetMapping("/preco")
-    public Page<ProdutoSummary> buscarPorPreco(
+    public PageResponse<ProdutoSummary> buscarPorPreco(
             @RequestParam BigDecimal min,
             @RequestParam BigDecimal max,
             Pageable pageable) {
-        return service.getByPrecoRange(min, max, pageable);
+
+        Page<ProdutoSummary> page = service.getByPrecoRange(min, max, pageable);
+
+        return new PageResponse<>(
+                page.getContent(),
+                page.getNumber(),
+                page.getTotalPages(),
+                page.getTotalElements()
+        );
     }
 
     @GetMapping("/tamanho")
-    public Page<ProdutoSummary> buscarPorTamanho(
+    public PageResponse<ProdutoSummary> buscarPorTamanho(
             @RequestParam String tamanho,
             Pageable pageable) {
-        return service.getByTamanho(tamanho, pageable);
+        Page<ProdutoSummary> page = service.getByTamanho(tamanho, pageable);
+        return new PageResponse<>(
+                page.getContent(),
+                page.getNumber(),
+                page.getTotalPages(),
+                page.getTotalElements()
+        );
     }
 
     @GetMapping("/categoria")
-    public Page<ProdutoSummary> buscarPorCategoria(
+    public PageResponse<ProdutoSummary> buscarPorCategoria(
             @RequestParam String categoria,
             Pageable pageable) {
-        return service.getByCategoria(categoria, pageable);
+
+        Page<ProdutoSummary> page = service.getByCategoria(categoria, pageable);
+
+        return new PageResponse<>(
+                page.getContent(),
+                page.getNumber(),
+                page.getTotalPages(),
+                page.getTotalElements()
+        );
     }
 
     @GetMapping("/cor")
-    public Page<ProdutoSummary> buscarPorCor(
+    public PageResponse<ProdutoSummary> buscarPorCor(
             @RequestParam String cor,
             Pageable pageable) {
-        return service.getByCor(cor, pageable);
+
+        Page<ProdutoSummary> page = service.getByCor(cor, pageable);
+
+        return new PageResponse<>(
+                page.getContent(),
+                page.getNumber(),
+                page.getTotalPages(),
+                page.getTotalElements()
+        );
     }
 }
