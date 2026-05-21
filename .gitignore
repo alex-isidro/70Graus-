@@ -1,8 +1,19 @@
 HELP.md
+
+### Maven / Build ###
 target/
-.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+
+### Maven Wrapper ###
+!.mvn/wrapper/maven-wrapper.jar
+
+### Logs ###
+*.log
+
+### Environment variables ###
+.env
+.env.*
 
 ### STS ###
 .apt_generated
@@ -14,10 +25,11 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
+out/
 
 ### NetBeans ###
 /nbproject/private/
@@ -31,3 +43,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### OS files ###
+.DS_Store
+Thumbs.db
