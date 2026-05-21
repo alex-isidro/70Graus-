@@ -4,6 +4,13 @@ API REST desenvolvida em Java com Spring para o Projeto Diamante 03 da disciplin
 
 O sistema representa o controle de uma loja de roupas, com cadastro de produtos, controle de estoque, funcionários e movimentações de entrada/saída.
 
+## Repositórios
+
+| Projeto | Link |
+|---|---|
+| Backend Spring Boot | https://github.com/alex-isidro/70Graus-.git |
+| Frontend React | https://github.com/KelsonZh0/70graus-frontend-react.git|
+
 ## Objetivo
 
 Criar uma API REST real e contextualizada usando os principais recursos estudados no semestre:
@@ -112,6 +119,104 @@ A API será iniciada em:
 
 ```text
 http://localhost:8080
+```
+
+
+## Frontend React
+
+Além da API REST em Java, foi desenvolvido um frontend em **React + Vite + TypeScript** para facilitar os testes e a apresentação do projeto ao professor.
+
+### Tecnologias do frontend
+
+- React
+- Vite
+- TypeScript
+- Axios
+- React Router DOM
+- CSS organizado
+
+### Telas do frontend
+
+| Tela | Finalidade |
+|---|---|
+| Dashboard | Visão geral do sistema e status da API |
+| Produtos | Listagem, cadastro, edição, exclusão, filtros, paginação e ordenação |
+| Estoque | Controle de quantidade disponível e quantidade mínima |
+| Funcionários | Cadastro e manutenção de funcionários sem exibir senha nas respostas |
+| Movimentações | Controle de entradas e saídas de estoque |
+| Projections | Demonstração dos filtros que retornam apenas campos resumidos dos produtos |
+| HATEOAS | Visualização dos links `_links` retornados pela API |
+| Monitoramento | Consulta aos endpoints do Spring Actuator |
+| Swagger | Atalho para a documentação automática da API |
+
+### Como rodar o frontend
+
+Entre na pasta do projeto frontend:
+
+```bash
+cd 70graus-frontend-react
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Crie o arquivo `.env` com a seguinte configuração:
+
+```env
+VITE_API_BASE_URL=/api
+```
+
+Execute o frontend:
+
+```bash
+npm run dev
+```
+
+O frontend será iniciado em:
+
+```text
+http://localhost:5173
+```
+
+### Observação sobre CORS
+
+Durante o desenvolvimento, o frontend usa proxy do Vite para evitar bloqueios de CORS.
+
+Com a variável:
+
+```env
+VITE_API_BASE_URL=/api
+```
+
+as chamadas feitas pelo React para `/api` são redirecionadas para:
+
+```text
+http://localhost:8080
+```
+
+Dessa forma, o frontend consegue consumir a API Spring Boot localmente sem precisar chamar diretamente `http://localhost:8080` pelo navegador.
+
+### Execução completa do projeto
+
+Para testar o projeto completo, execute primeiro o backend Spring Boot:
+
+```powershell
+.\mvnw.cmd spring-boot:run
+```
+
+Depois execute o frontend React:
+
+```powershell
+npm run dev
+```
+
+Com os dois projetos rodando, acesse:
+
+```text
+http://localhost:5173
 ```
 
 ## Banco de dados H2
@@ -262,3 +367,9 @@ http://localhost:8080/actuator/caches
 }
 ```
 
+## Integrantes
+
+| Nome      | RM        | Turma |
+|-----------|-----------|---|
+| Kelson    | RM 563748 | 2TDSPG |
+| Alexander | RM 565554 | 2TDSPG |
